@@ -19,8 +19,8 @@ RNG rng(12345);
 Mat src_gray;
 Mat edge;
 Mat dst;
+string filename;
 int main(int argc, char** argv) {
-	string filename;
 	cout << "please input path and filename: ";
 	cin >> filename;
 	Mat src = imread(filename,CV_LOAD_IMAGE_COLOR);
@@ -78,5 +78,7 @@ void thresh_callback(int, void*)
 	/// Show in a window
 	namedWindow("Contours", WINDOW_AUTOSIZE);
 	imshow("Contours", drawing);
-	imwrite("contours.jpg",drawing);
+	string filename2;
+	filename2 = "contours of " + filename;
+	imwrite(filename2,drawing);
 }
